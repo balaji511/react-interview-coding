@@ -4,3 +4,8 @@ td {
   padding: 10px 12px;
   text-align: left;
 }
+
+h3,
+button {
+  padding: 8px;
+}
