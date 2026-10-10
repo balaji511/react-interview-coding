@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const AutoSaveForm: React.FC = () => {
-  const [isAutoSaveEnabled, setIsAutoSaveEnabed] = useState(false);
+  const [isAutoSaveEnabled, setIsAutoSaveEnabed] = useState(true);
+  const [isToSave, setIsToSave] = useState(false);
   const [userInput, setUserInputs] = useState({
     input1: "",
     input2: "",
@@ -11,9 +12,14 @@ const AutoSaveForm: React.FC = () => {
     input5: "",
   });
 
+  console.log("IsToAutoSave ", isToSave);
   const autoSaveOrderHandler = async () => {
-    console.log("AutosaveTriggered");
-    return "";
+    if (isToSave) {
+      console.log("AutosaveTriggered");
+    } else {
+      console.log("AutoSaveAlreadyTriggered");
+    }
+    setIsToSave(false);
   };
 
   useQuery({
@@ -24,10 +30,9 @@ const AutoSaveForm: React.FC = () => {
   });
 
   const handleInputChange = (e: any) => {
-    setIsAutoSaveEnabed(true);
+    setIsToSave(true);
     const { name, value } = e.target;
     setUserInputs((p) => ({ ...p, [name]: value }));
-    console.log(name, value);
   };
 
   return (
@@ -87,8 +92,8 @@ const AutoSaveForm: React.FC = () => {
         Turn off Auto Save
       </button>
       <div>
-        <h1 style={{ background: isAutoSaveEnabled ? "green" : "red" }}>
-          Auto Save: {isAutoSaveEnabled ? "Enabled" : "Disabled"}
+        <h1 style={{ background: isToSave ? "green" : "red" }}>
+          Auto Save: {isToSave ? "Enabled" : "Disabled"}
         </h1>
         <pre>{JSON.stringify(userInput)}</pre>
       </div>
