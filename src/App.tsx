@@ -6,13 +6,15 @@ import React from "react";
 import "./App.css";
 import AutoSaveForm from "./components/autoSaveForm.component";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Calculator from "./components/calculator/calculator.component";
 
 const App: React.FC = () => {
   const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <AutoSaveForm />
-    </QueryClientProvider>
+    <Calculator />
+    // <QueryClientProvider client={queryClient}>
+    //   <AutoSaveForm />
+    // </QueryClientProvider>
   );
 };
 
