@@ -5,9 +5,10 @@ import React from "react";
 // import ListRendering from "./components/ListRendering/ListRendering.component";
 // import TransistionList from "./components/transistionList/transistionList.component";
 import "./App.css";
-import AutoSaveForm from "./components/autoSaveForm.component";
+// import AutoSaveForm from "./components/autoSaveForm.component";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Calculator from "./components/calculator/calculator.component";
+import TicTacToe from "./components/ticTacToe/ticTacToe.component";
 import ReactPortal from "./components/Portal/ReactPortal.tsx";
 import useServerCall from "./customHooks/useServerCall.ts";
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
     // <QueryClientProvider client={queryClient}>
     //   <AutoSaveForm />
     // </QueryClientProvider>
+    <TicTacToe />
   );
 };
 
